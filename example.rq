@@ -1,0 +1,24 @@
+#+ summary: EMAS CO2 at EEA
+#+ endpoint: http://semantic.eea.europa.eu/sparql 
+#+ tags:
+#+   - air pollution
+#+   - transport
+#+ method: GET
+#+ pagination: 50
+
+
+PREFIX measurements: <http://rdfdata.eionet.europa.eu/emas_co2/schema/>
+
+SELECT DISTINCT
+?year
+?projectCode
+?kgs
+?kms
+WHERE { 
+ GRAPH <http://r.eionet.europa.eu/rdfdumps/emas/emas_co2.rdf.gz> {  
+   ?emas measurements:YEAR ?year .
+   ?emas measurements:PROJECTCODE ?projectCode .
+   ?emas measurements:KGS ?kgs .
+   ?emas measurements:KMS ?kms .
+ } 
+}
