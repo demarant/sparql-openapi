@@ -16,7 +16,6 @@ SELECT
 ?year 
 ?pollutant_name
 (round((sum(?emissions))/sum(?emissions_idx)*1000))/10.0 as ?index
-
 WHERE {{  
   GRAPH <http://r.eionet.europa.eu/rdfdumps/clrtap_nec_unfccc/clrtap_nfr09_gf.rdf.gz> 
   {
@@ -25,15 +24,12 @@ WHERE {{
    ?clrtap_nfr09_gf clrtap_nec_unfccc:year ?year .
    ?clrtap_nfr09_gf clrtap_nec_unfccc:sector_code ?sector_code .
    ?clrtap_nfr09_gf clrtap_nec_unfccc:emissions ?emissions .
-
    ?clrtap_nfr09_gf_idx clrtap_nec_unfccc:country_code ?country_code .
    ?clrtap_nfr09_gf_idx clrtap_nec_unfccc:pollutant_name ?pollutant_name .
    ?clrtap_nfr09_gf_idx clrtap_nec_unfccc:year ?year_idx .
    ?clrtap_nfr09_gf_idx clrtap_nec_unfccc:sector_code ?sector_code .
    ?clrtap_nfr09_gf_idx clrtap_nec_unfccc:emissions ?emissions_idx .
-
    FILTER(?year_idx = '1990')
-
    FILTER (?sector_code in (
      sector:1A3bi,
      sector:1A3bii,
@@ -52,7 +48,6 @@ WHERE {{
      <http://reference.eionet.europa.eu/clrtap_nec_unfccc/clrtap_nec_nfr09_sector/1A3ai(i)>,
      <http://reference.eionet.europa.eu/clrtap_nec_unfccc/clrtap_nec_nfr09_sector/1A3ai(ii)>
    ))
-   
    FILTER (?pollutant_name in ('PM2.5'))
    FILTER (?country_code in (country:EU28, country:TR, country:NO, country:IS, country:LI, country:CH))
   }
