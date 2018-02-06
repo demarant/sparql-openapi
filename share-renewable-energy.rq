@@ -17,7 +17,6 @@ SELECT DISTINCT
 year(?date) as ?date
 ?ugeo
 ?indic_en_label
-#?unit
 ?obsValue
 
 WHERE {

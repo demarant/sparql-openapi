@@ -15,8 +15,6 @@ PREFIX sector: <http://reference.eionet.europa.eu/clrtap_nec_unfccc/clrtap_nec_n
 SELECT
 ?year 
 ?pollutant_name
-#sum(?emissions) as ?emissions
-#sum(?emissions_idx) as ?emissions_idx
 (round((sum(?emissions))/sum(?emissions_idx)*1000))/10.0 as ?index
 
 WHERE {{  
@@ -56,9 +54,7 @@ WHERE {{
    ))
    
    FILTER (?pollutant_name in ('PM2.5'))
-   #to be changed with EEA33
    FILTER (?country_code in (country:EU28, country:TR, country:NO, country:IS, country:LI, country:CH))
-   #FILTER (?country_code in (country:EEA33))
   }
  }}
 GROUP BY ?year ?pollutant_name
